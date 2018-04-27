@@ -4,14 +4,14 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 	
 	@Override
 	public void insert(int key, String value) {
+		Proj05_RedBlackNode node = new Proj05_RedBlackNode(key, value);
+		Proj05_RedBlackNode current = root;
 		if (root == null) {
-			root = new Proj05_RedBlackNode(key, value); 
+			root = node; 
 		} else { 
 			if (search(key) != null) {
 				throw new IllegalArgumentException("Attempt to insert a duplicate key '" + key + "'");
 			} else {
-				Proj05_RedBlackNode node = new Proj05_RedBlackNode(key, value);
-				Proj05_RedBlackNode current = root;
 				while (current != null) {
 					if (node.key < current.key) {
 						current = current.left;
@@ -23,6 +23,8 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 				}
 			}
 		}
+		fixTree(current);
+		
 	}
 	/* might use this implementation instead if above does not work
 	private void insertHelper(Proj05_RedBlackNode key, Proj05_RedBlackNode parent) {
@@ -41,6 +43,53 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		}
 	}
 	*/
+	private void fixTree(Proj05_RedBlackNode node) {
+		resolveReds();
+	}
+	private void resolveReds() {
+		
+	}
+	private static boolean colorChecker(Proj05_RedBlackNode node) {
+		if (node == null) {
+			return false;
+		}
+		return node.isRed;
+	}
+	private void recolor(Proj05_RedBlackNode node, boolean parentValue, boolean childValue) {
+		//recolor node and children
+		node.isRed = parentValue;
+		node.left.isRed = childValue;
+		node.right.isRed = childValue;
+	}
+	private void singleLeftRotation(Proj05_RedBlackNode node, Proj05_RedBlackNode parent) {
+		Proj05_RedBlackNode rightNode = node.right;
+		if (node == root) {
+			root = rightNode;
+		} else {
+			if (parent.left == node) {
+				parent.left = rightNode;
+			} else {
+				parent.right = rightNode;
+			}
+		}
+		node.right = rightNode.left;
+		rightNode.left = node;
+	}
+
+	private void singleRightRotation(Proj05_RedBlackNode node, Proj05_RedBlackNode parent) {
+		Proj05_RedBlackNode leftNode = node.left;
+		if (node == root) {
+			root = leftNode;
+		} else {
+			if (parent.left == node) {
+				parent.left = leftNode;
+			} else {
+				parent.right = leftNode;
+			}
+		}
+		node.left = leftNode.right;
+		leftNode.right = node;
+	}
 	
 	/* search method accepts an int parameter as the key of 
 	 * the node being searched for. If the key is not in the
