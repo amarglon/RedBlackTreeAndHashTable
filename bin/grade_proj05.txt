@@ -1,0 +1,334 @@
+#! /bin/bash
+
+
+# NOTE: I added LC_ALL=C because in some other locales, 'sort' does very
+#       strange things!  See:
+#   https://www.gnu.org/software/coreutils/faq/coreutils-faq.html#Sort-does-not-sort-in-normal-order_0021
+export LC_ALL=C
+
+
+TIME_LIMIT=10     # in seconds
+
+TEST_DRIVER_NAME=Proj05_TestDriver
+
+DO_DOTFILE_TEST=0
+#DOT_FILE_TESTER=Proj04_TestDotFile_Tree3
+#DOT_FILE_TEST_DOTFILE_NAME=sanity_check.dot
+#DOT_FILE_TEST_PNGFILE_NAME=sanity_check.png
+
+TREE_TYPES="RedBlack HashTable"
+
+
+
+if [[ $(ls -1 test_* 2>/dev/null) == "" ]]
+then
+  echo "No files named test_\* were found.  The grading script cannot run." 1>&2
+  exit 1
+fi
+
+#if [[ $(ls -1 test_*.c 2>/dev/null) == "" ]]
+#then
+#  echo "No files named test_*.c were found.  The grading script cannot run." 1>&2
+#  exit 1
+#fi
+
+
+
+if [[ DO_DOTFILE_TEST = 1 && ! -f ${DOT_FILE_TESTER}.java ]]
+then
+  echo "ERROR: ${DOT_FILE_TESTER}.java does not exist.  The grading script cannot continue." 1>&2
+  exit 1
+fi
+
+if [[ ! -f ${TEST_DRIVER_NAME}.java ]]
+then
+  echo "ERROR: ${TEST_DRIVER_NAME}.java does not exist.  The grading script cannot continue." 1>&2
+  exit 1
+fi
+
+
+
+echo "Compiling *.java ..."
+
+# BUGFIX:
+#
+# It appears that Java does *NOT* remove old .class files when compilation
+# fails.  So we had a student who had an old, buggy implementation of the
+# code (which compiled).  When they changed it to a new (non-compiling)
+# version, javac (correctly) fails to compile the code but (maddeningly)
+# leaves the old .class files around.  So, when the code runs, the student
+# sees the old behavior, for reasons that they don't understand.
+rm $(ls -1 *.class 2>/dev/null | grep -v _example) 2>/dev/null
+
+# BUGFIX:
+#
+# When there is an error which breaks some (but not all) of the files, javac
+# will abort *all* of the builds.  So we had a student who lost *all* of his
+# testcase points because *some* testcases were broken.  So we'd like to
+# build all of the files individually.
+#
+# However, doing it that way (by default) is likely to be quite slow.  So
+# we will instead only fall back on that plan when the original compile
+# fails.
+javac *.java || {
+  echo "--- JAVA COMPILE FAILURE ---"
+  echo "javac reported some errors while building your code.  (See the output above.)"
+  echo "This script will now re-run javac on each file, one at a time, in hopes of"
+  echo "succeeding in building some of the testcases."
+  echo
+  echo "In order to not clutter up the script output, this rebuild will *NOT* print"
+  echo "out any error messages; refer to the output above to see why javac failed."
+  echo
+  echo "This process is likely to be slow; if you want, you can use Ctrl-C to kill"
+  echo "this rebuild operation."
+  echo "----------------------------"
+
+  ls -1 *.java 2>&1 | xargs -r -n1 javac 1>/dev/null 2>&1
+}
+
+
+if [[ ! -f ${TEST_DRIVER_NAME}.class ]]
+then
+  echo "ERROR: The TestDriver class could not be compiled (see the errors above).  The grading script cannot continue." 1>&2
+  exit 1
+fi
+
+
+
+ATTEMPTED=0
+PASSED=0
+
+for TESTCASE in $(ls -1 test_*)
+do
+
+for TREETYPE in ${TREE_TYPES}
+do
+
+  echo "--------------------------------------------------"
+  echo "| Running the testcase ${TESTCASE} on a $TREETYPE tree..."
+  echo "--------------------------------------------------"
+
+  if [[ $TREETYPE == "red-black" && $(grep delete $TESTCASE) != "" ]]
+  then
+    echo "Skipping this testcase (for Red-Black), since we didn't support deletion on Red-Black trees."
+    echo
+    continue
+  fi
+
+
+  ATTEMPTED=$(( ATTEMPTED+4 ))
+
+
+  # run the testcase.  Capture stdout and stderr.  If we pass the basic
+  # test, then we'll run the algorithms in the 'trace' mode, for the last
+  # 20% of the score for this input data.
+
+  # these are the 2 log files we'll create
+  e=logs.$TESTCASE.$TREETYPE.example.stdout
+  s=logs.$TESTCASE.$TREETYPE.student.stdout
+
+  # clean up the old files
+  rm $e $s 2>/dev/null
+
+
+  # clean up any .dot files which existed before the testcase ran
+  rm *.dot 2>/dev/null
+
+  java $TEST_DRIVER_NAME $TREETYPE example debug <$TESTCASE &>$e
+  RC=$?
+  e_dotFiles=$(ls -1 *.dot 2>/dev/null)
+
+  # remove the files which were generated
+  rm *.dot 2>/dev/null
+
+
+  # if the example code produced an error, then we probably have some
+  # basic config error.
+  if [[ $RC != 0 ]]
+  then
+    echo "ERROR: The example version of this testcase returned nonzero exit status.  rc=$RC" 1>&2
+    continue
+  fi
+
+
+  # Sometimes, student programs enter infinite loops, and chew up *WAY* too
+  # much space for the log.  So we crop the file; the size is defined based
+  # on the length of the example output file.
+  #
+  # measure the size of the example output file; we'll only allow that many
+  # lines.  And we'll chop every line at no more than 1000 characters.
+  LINE_LIMIT=$(wc -l $e | awk '{print $1}')
+  LINE_LIMIT=$(( LINE_LIMIT*2 + 10 ))
+
+  # run the student code, with all of the safety-checks
+  timeout -k $TIME_LIMIT $TIME_LIMIT java $TEST_DRIVER_NAME $TREETYPE debug <$TESTCASE 2>&1 | head -n${LINE_LIMIT} | cut -c-1000 >$s
+
+  RC=$?
+
+  # collect the list of .dot files generated by the student code
+  s_dotFiles=$(ls -1 *.dot 2>/dev/null)
+  s_empty_dotFiles=$(ls -al *.dot 2>/dev/null | tr -s ' ' | cut -f5,9 -d' ' | grep "^0 " | cut -f2 -d' ')
+
+  # now clean up those files...
+  rm *.dot 2>/dev/null
+
+
+  # Diagnose student timeouts with a message that makes it clear.  Otherwise
+  # I get lots of Piazza posts about it.  :(
+  if [[ $RC == 124 ]]
+  then
+    echo "TESTCASE FAILED: timeout!"
+    echo
+    continue
+  elif [[ $RC != 0 ]]
+  then
+    echo "TESTCASE FAILED: nonzero exit status $RC"
+    echo
+    continue
+  fi
+
+  # compare stdout
+  if [[ $(diff $e $s) == "" ]]
+  then
+    #echo "stdout compare OK."
+    PASSED=$(( PASSED+3 ))
+    rm $e $s
+  else
+    echo "TESTCASE FAILED: stdout miscompare!"
+    echo "--- diff output: ---"
+    diff $e $s
+    echo
+    continue
+  fi
+
+
+  # if we get here, we passed the basic testcase output comparison - so we'll
+  # now compare the list of .dot files generated.
+  if [[ ${s_empty_dotFiles} != "" ]]
+  then
+    echo "TESTCASE ERROR: The student code generated some .dot files which were empty." 1>&2
+    echo "Affected files:" $s_empty_dotFiles 1>&2
+    echo
+    continue
+  fi
+
+  if [[ ${s_dotFiles} != ${e_dotFiles} ]]
+  then
+    echo "TESTCASE ERROR: The student code did not generate the same list of .dot files as the example code" 1>&2
+    echo "Example code created these files:" $e_dotFiles 1>&2
+    echo "Student code created these files:" $s_dotFiles 1>&2
+    echo
+    continue
+  fi
+
+  # if we get here, then the files are at least plausible.
+  echo "Testcase passed."
+  echo
+  PASSED=$(( PASSED+1 ))
+done   # end loop over TESTCASE
+done   # end loop over TREETYPE
+
+
+
+MAX_AUTO_SCORE=80
+SCORE_SO_FAR=$(( MAX_AUTO_SCORE*PASSED / ATTEMPTED ))
+
+
+
+echo
+echo "--------------------------------------"
+echo "Running the dot file test driver..."
+echo "--------------------------------------"
+
+# we'll assume that a penalty is applied *UNLESS* we pass all of the tests.
+PENALTY=1
+
+if [[ $DO_DOTFILE_TEST = 1 ]]
+then
+  if [[ ! -f ${DOT_FILE_TESTER}.class ]]
+  then
+    echo "ERROR: The TestDriver class could not be compiled (see the errors above).  The grading script cannot continue." 1>&2
+
+  elif [[ $(which timeout 2>/dev/null) == "" ]]
+  then
+    echo "ERROR: The tool 'dot' is not available on this machine." 1>&2
+
+  else
+    # make sure that the output files don't already exist
+    rm ${DOT_FILE_TEST_DOTFILE_NAME} ${DOT_FILE_TEST_DOTFILE_NAME} 2>/dev/null
+
+    # run the test driver.  We use 'timeout' because it runs student code.  We
+    # discard all of the output.
+    timeout -k $TIME_LIMIT $TIME_LIMIT java ${DOT_FILE_TESTER} >/dev/null 2>&1
+    RC=$?
+
+    if [[ $RC == 124 ]]
+    then
+      echo "ERROR: The dotfile test driver timed out." 1>&2
+
+    elif [[ $RC != 0 ]]
+    then
+      echo "ERROR: The dotfile test driver terminated with a nonzero exit code." 1>&2
+
+    else
+
+      # does the .dot file exist?
+      if [[ ! -f ${DOT_FILE_TEST_DOTFILE_NAME} ]]
+      then
+        echo "ERROR: The file ${DOT_FILE_TEST_DOTFILE_NAME} was not created." 1>&2
+
+      elif [[ ! -s ${DOT_FILE_TEST_DOTFILE_NAME} ]]
+      then
+        echo "ERROR: The file ${DOT_FILE_TEST_DOTFILE_NAME} is empty." 1>&2
+
+      else
+        if [[ $(which dot 2>/dev/null) == "" ]]
+        then
+          echo "ERROR: The tool 'dot' is not available on this machine." 1>&2
+
+        else
+          # run 'dot', and double-check the output
+          OUTPUT=$(dot -Tpng ${DOT_FILE_TEST_DOTFILE_NAME} -o ${DOT_FILE_TEST_PNGFILE_NAME} 2>&1)
+          RC=$?
+
+          if [[ $RC != 0 ]]
+          then
+            echo "ERROR: The dot command had nonzero exit code.  rc=$RC" 1>&2
+
+          elif [[ $OUTPUT != "" ]]
+          then
+            echo "ERROR: The dot command produced some output:" 1>&2
+            echo "$OUTPUT"
+
+          elif [[ ! -f ${DOT_FILE_TEST_PNGFILE_NAME} ]]
+          then
+            echo "ERROR: The dot command did not produce the expected output file ${DOT_FILE_TEST_PNGFILE_NAME}" 1>&2
+
+          else 
+            echo "All dotfile test driver tests passed OK!"
+            PENALTY=0
+
+          fi
+        fi
+      fi
+    fi
+  fi
+fi    # end of the DOTFILE testing
+
+
+
+echo
+echo "*******************************************"
+echo "*            OVERALL REPORT"
+
+if [[ $DO_DOTFILE_TEST = 1 && $PENALTY != 0 ]]
+then
+  echo "* Dot file test failed, penalty applied    (see above)"
+  echo "*   original:             ${SCORE_SO_FAR}"
+  echo "*   after penalty, score: $(( SCORE_SO_FAR * 2 / 3))"
+else
+  echo "* score:    ${SCORE_SO_FAR}"
+fi
+
+echo "*******************************************"
+
