@@ -5,47 +5,67 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 	@Override
 	public void insert(int key, String value) {
 		Proj05_RedBlackNode node = new Proj05_RedBlackNode(key, value);
-		Proj05_RedBlackNode current = root;
+		//Proj05_RedBlackNode current = root;
 		if (root == null) {
 			root = node; 
+			root.isRed = false;
 		} else { 
 			if (search(key) != null) {
 				throw new IllegalArgumentException("Attempt to insert a duplicate key '" + key + "'");
 			} else {
-				while (current != null) {
-					if (node.key < current.key) {
-						current = current.left;
-					} else if (node.key > current.key) {
-						current = current.right;
-					} else {
-						current = node;
-					}
+				//insert the node
+				insertHelper(node, root);
+				//rebalance the tree
+				//rebalanceTree(node, root);
+				//recolor the root if red
+				if (root.isRed) {
+					root.isRed = false;
 				}
 			}
 		}
-		fixTree(current);
-		
 	}
-	/* might use this implementation instead if above does not work
-	private void insertHelper(Proj05_RedBlackNode key, Proj05_RedBlackNode parent) {
-		if (key.key < parent.key) {
+
+	//recursive insertHelper, standard BST insert
+	private void insertHelper(Proj05_RedBlackNode child, Proj05_RedBlackNode parent) {
+		if (child.key < parent.key) {
 			if (parent.left == null) {
-				parent.left = key;
+				parent.left = child;
+				rebalanceTree(parent.left, parent);
 			} else {
-				insertHelper(key, parent.left);
+				insertHelper(child, parent.left);
 			}
 		} else {
 			if (parent.right == null) {
-				parent.right = key;
+				parent.right = child;
+				rebalanceTree(parent.right, parent);
 			} else {
-				insertHelper(key, parent.right);
+				insertHelper(child, parent.right);
 			}
 		}
 	}
-	*/
-	private void fixTree(Proj05_RedBlackNode node) {
-		resolveReds();
+	
+	private void rebalanceTree(Proj05_RedBlackNode child, Proj05_RedBlackNode parent) {
+		//case 1: parent is black, return
+		//case 2: parent is red, rotation and color change (uncle is red, uncle is black)
+		if(!parent.isRed) {
+			//NOP
+			return;
+		} 
+		//if parent is red and uncle is red
+		if (parent.isRed && parent.isRed) {
+			resolveReds();
+		}
+		//if parent is red and uncle is black
+		if (parent.isRed && !parent.isRed) {
+			
+		}
+		//if parent is red and uncle is black
+		rebalanceTree(child.left, child.left.left);
+		rebalanceTree(child.left, child.left.right);
+		rebalanceTree(child.right, child.right.left);
+		rebalanceTree(child.right, child.right.right);
 	}
+	
 	private void resolveReds() {
 		
 	}
@@ -61,6 +81,7 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		node.left.isRed = childValue;
 		node.right.isRed = childValue;
 	}
+	
 	private void singleLeftRotation(Proj05_RedBlackNode node, Proj05_RedBlackNode parent) {
 		Proj05_RedBlackNode rightNode = node.right;
 		if (node == root) {
@@ -178,9 +199,9 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 	//Unimplemented methods
 	@Override
 	public void delete(int key) {
-		// Delete function is a stub function 
+		// Delete function throws exception 
 		// as delete is not required
-
+		throw new IllegalArgumentException("ERROR: delete() is not implemented in the red-black tree.");
 	}
 	
 	@Override
