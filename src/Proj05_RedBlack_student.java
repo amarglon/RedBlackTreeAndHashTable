@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Proj05_RedBlack_student implements Proj04_Dictionary {
 	private Proj05_RedBlackNode root;
@@ -43,27 +44,48 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 			}
 		}
 	}
-	
+
 	private void rebalanceTree(Proj05_RedBlackNode child, Proj05_RedBlackNode parent) {
+		Proj05_RedBlackNode grandparent;
 		//case 1: parent is black, return
 		//case 2: parent is red, rotation and color change (uncle is red, uncle is black)
-		if(!parent.isRed) {
-			//NOP
-			return;
-		} 
-		//if parent is red and uncle is red
-		if (parent.isRed && parent.isRed) {
-			resolveReds();
+		ArrayList<Proj05_RedBlackNode> traversal = pathFinder(parent);
+		for (int current = traversal.size() - 1; current > -1; current--) {
+			if (traversal.get(current) == root) {
+				grandparent = null;
+			} else {
+				grandparent = traversal.get(current - 1);
+			}
+			if(!parent.isRed) {
+				//NOP
+				return;
+			} 
+			//if parent is red and uncle is red
+			if (parent.isRed && grandparent.left.isRed) {
+				resolveReds();
+			}
+			//if parent is red and uncle is black
+			if (parent.isRed && !parent.isRed) {
+				
+			}
+			//if parent is red and uncle is black
 		}
-		//if parent is red and uncle is black
-		if (parent.isRed && !parent.isRed) {
-			
+	}
+	
+	private ArrayList<Proj05_RedBlackNode> pathFinder(Proj05_RedBlackNode node) {
+		Proj05_RedBlackNode presentNode = root;
+		ArrayList<Proj05_RedBlackNode> traversal = new ArrayList<>();
+		while (node != null) {
+			traversal.add(presentNode);
+			if (node.key < presentNode.key) {
+				presentNode = presentNode.left;
+			} else if (node.key > presentNode.key) {
+				presentNode = presentNode.right;
+			} else {
+				break;
+			}
 		}
-		//if parent is red and uncle is black
-		rebalanceTree(child.left, child.left.left);
-		rebalanceTree(child.left, child.left.right);
-		rebalanceTree(child.right, child.right.left);
-		rebalanceTree(child.right, child.right.right);
+		return traversal;
 	}
 	
 	private void resolveReds() {

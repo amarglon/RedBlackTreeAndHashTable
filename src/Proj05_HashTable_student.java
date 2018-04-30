@@ -21,13 +21,13 @@ public class Proj05_HashTable_student implements Proj04_Dictionary {
 
 	@Override
 	public void printInOrder() {
-		// TODO Auto-generated method stub
+		printPostOrder();
 		
 	}
 
 	@Override
 	public void printPreOrder() {
-		// TODO Auto-generated method stub
+		printPostOrder();
 		
 	}
 
@@ -39,8 +39,8 @@ public class Proj05_HashTable_student implements Proj04_Dictionary {
 
 	@Override
 	public void genDebugDot(String filename) {
-		// TODO Auto-generated method stub
-		
+		//Method stub
+		return;
 	}
 
 }
