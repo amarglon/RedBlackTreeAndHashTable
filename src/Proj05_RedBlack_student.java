@@ -31,66 +31,71 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		if (child.key < parent.key) {
 			if (parent.left == null) {
 				parent.left = child;
-				rebalanceTree(parent.left, parent);
+				//rebalanceTree(parent.left, parent);
 			} else {
 				insertHelper(child, parent.left);
 			}
 		} else {
 			if (parent.right == null) {
 				parent.right = child;
-				rebalanceTree(parent.right, parent);
+				//rebalanceTree(parent.right, parent);
 			} else {
 				insertHelper(child, parent.right);
 			}
 		}
+		if (parent.isRed == false) {
+			rebalanceTree(parent);
+		}
 	}
-
-	private void rebalanceTree(Proj05_RedBlackNode child, Proj05_RedBlackNode parent) {
-		Proj05_RedBlackNode grandparent;
-		//case 1: parent is black, return
-		//case 2: parent is red, rotation and color change (uncle is red, uncle is black)
-		ArrayList<Proj05_RedBlackNode> traversal = pathFinder(parent);
-		for (int current = traversal.size() - 1; current > -1; current--) {
-			if (traversal.get(current) == root) {
-				grandparent = null;
+	private void rebalanceTree(Proj05_RedBlackNode grandparent) {
+		//case 1: if parent is black, return
+		//case 2: if parent is red and uncle is black
+		//case 3: if parent is red and uncle is red
+		
+		//check both children, if both are black just return
+		if (colorChecker(grandparent.left) == false && colorChecker(grandparent.right) == false) {
+			return;
+		}
+		
+		//seeking red-red problems
+		if (colorChecker(grandparent.left) == true) {
+			if (colorChecker(grandparent.right) == false) {
+				if (colorChecker(grandparent.left.left) == true) {
+					//single right rotation, recolor nodes
+					singleRightRotation(grandparent.left.left, grandparent.left);
+					//recolor(grandparent
+				} else if (colorChecker(grandparent.left.right) == true) {
+					//single rotate left, single rotate right, recolor nodes
+					leftRightRotation(grandparent.left, grandparent);
+					//recolor(grandparent
+				}
 			} else {
-				grandparent = traversal.get(current - 1);
+				recolor(grandparent, true, false);
 			}
-			if(!parent.isRed) {
-				//NOP
-				return;
-			} 
-			//if parent is red and uncle is red
-			if (parent.isRed && grandparent.left.isRed) {
-				resolveReds();
+		}
+		
+		if (colorChecker(grandparent.right) == true) {
+			if (colorChecker(grandparent.left) == false) {
+				if (colorChecker(grandparent.right.left) == true) {
+					//single right rotation, single left rotation, recolor nodes
+					rightLeftRotation(grandparent.right, grandparent);
+					//recolor(grandparent, 
+				} else if (colorChecker(grandparent.right.right) == true) {
+					//single left rotation, recolor nodes
+					singleLeftRotation(grandparent.right.right, grandparent.right);
+					//recolor(grandparent
+				}
+			} else {
+				recolor(grandparent, true, false);
 			}
-			//if parent is red and uncle is black
-			if (parent.isRed && !parent.isRed) {
-				
-			}
-			//if parent is red and uncle is black
 		}
 	}
 	
-	private ArrayList<Proj05_RedBlackNode> pathFinder(Proj05_RedBlackNode node) {
-		Proj05_RedBlackNode presentNode = root;
-		ArrayList<Proj05_RedBlackNode> traversal = new ArrayList<>();
-		while (node != null) {
-			traversal.add(presentNode);
-			if (node.key < presentNode.key) {
-				presentNode = presentNode.left;
-			} else if (node.key > presentNode.key) {
-				presentNode = presentNode.right;
-			} else {
-				break;
-			}
-		}
-		return traversal;
-	}
-	
-	private void resolveReds() {
+	private void resolveRedsManager(Proj05_RedBlackNode grandparent) {
 		
 	}
+	
+	
 	private static boolean colorChecker(Proj05_RedBlackNode node) {
 		if (node == null) {
 			return false;
@@ -104,35 +109,77 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		node.right.isRed = childValue;
 	}
 	
-	private void singleLeftRotation(Proj05_RedBlackNode node, Proj05_RedBlackNode parent) {
-		Proj05_RedBlackNode rightNode = node.right;
-		if (node == root) {
+	private void singleLeftRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
+		Proj05_RedBlackNode rightNode = grandparent.right;
+		if (grandparent == root) {
 			root = rightNode;
 		} else {
-			if (parent.left == node) {
-				parent.left = rightNode;
+			if (grandparent.left == grandparent) {
+				grandparent.left = rightNode;
 			} else {
-				parent.right = rightNode;
+				grandparent.right = rightNode;
 			}
 		}
-		node.right = rightNode.left;
-		rightNode.left = node;
+		grandparent.right = rightNode.left;
+		rightNode.left = grandparent;
+	}
+	private void leftRightRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
+		// the node's left child, and the left child's right child (grand child)
+		Proj05_RedBlackNode leftNode = parent.left;
+		Proj05_RedBlackNode rightChild = leftNode.right;
+
+		if (parent == root) {
+			root = rightChild;
+		} else {
+			if (grandparent.left == parent) {
+				grandparent.left = rightChild;
+			} else {
+				grandparent.right = rightChild;
+			}
+		}
+
+		parent.left = rightChild.right;
+		leftNode.right = rightChild.left;
+		rightChild.left = leftNode;
+		rightChild.right = parent;
 	}
 
-	private void singleRightRotation(Proj05_RedBlackNode node, Proj05_RedBlackNode parent) {
-		Proj05_RedBlackNode leftNode = node.left;
-		if (node == root) {
+	private void singleRightRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
+		Proj05_RedBlackNode leftNode = parent.left;
+		if (parent == root) {
 			root = leftNode;
 		} else {
-			if (parent.left == node) {
-				parent.left = leftNode;
+			if (grandparent.left == parent) {
+				grandparent.left = leftNode;
 			} else {
-				parent.right = leftNode;
+				grandparent.right = leftNode;
 			}
 		}
-		node.left = leftNode.right;
-		leftNode.right = node;
+		parent.left = leftNode.right;
+		leftNode.right = parent;
 	}
+	
+	private void rightLeftRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
+		Proj05_RedBlackNode rightNode = grandparent.right;
+		Proj05_RedBlackNode leftChild = rightNode.left;
+
+		if (grandparent == root) {
+			root = leftChild;
+		} else {
+			if (grandparent.left == grandparent) {
+				grandparent.left = leftChild;
+			} else {
+				grandparent.right = leftChild;
+			}
+		}
+
+		grandparent.right = leftChild.left;
+		rightNode.left = leftChild.right;
+		leftChild.left = grandparent;
+		leftChild.right = rightNode;
+
+	}
+
 	
 	/* search method accepts an int parameter as the key of 
 	 * the node being searched for. If the key is not in the
@@ -231,5 +278,69 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		// generate dot files to help with debug
 
 	}
+	/*
+	private void rebalanceTree(Proj05_RedBlackNode child, Proj05_RedBlackNode parent) {
+		Proj05_RedBlackNode grandparent;
+		//case 1: parent is black, return
+		//case 2: parent is red, rotation and color change (uncle is red, uncle is black)
+		ArrayList<Proj05_RedBlackNode> traversal = pathFinder(parent);
+		for (int current = traversal.size() - 1; current > -1; current--) {
+			if (traversal.get(current) == root) {
+				grandparent = null;
+			} else {
+				grandparent = traversal.get(current - 1);
+			}
+			if(!parent.isRed) {
+				//NOP
+				return;
+			} 
+			//if parent is red and uncle is red
+			if (parent == grandparent.left && grandparent.right.isRed) {
+				recolor(grandparent, true, false);
+				child = grandparent;
+				//resolveReds();
+			} else if (parent == grandparent.right && grandparent.left.isRed) {
+				recolor(grandparent, true, false);
+				child = grandparent;
+				//resolveReds();
+			}
+			//if parent is red and uncle is black
+			if (parent == grandparent.left && !grandparent.right.isRed) {
+				if (child == parent.right) {
+					child = parent;
+					parent.isRed = false;
+					grandparent.isRed = true;
+					singleLeftRotation(child, grandparent);
+				//case three ??	
+				}
+			} else if (parent == grandparent.right && !grandparent.right.isRed) {
+				if (child == parent.right) {
+					child = parent;
+					parent.isRed = false;
+					grandparent.isRed = true;
+					singleLeftRotation(child, grandparent);
+				//case three ??
+				}
+			}
+			
+		}
+	}
+	
+	private ArrayList<Proj05_RedBlackNode> pathFinder(Proj05_RedBlackNode node) {
+		Proj05_RedBlackNode presentNode = root;
+		ArrayList<Proj05_RedBlackNode> traversal = new ArrayList<>();
+		while (node != null) {
+			traversal.add(presentNode);
+			if (node.key < presentNode.key) {
+				presentNode = presentNode.left;
+			} else if (node.key > presentNode.key) {
+				presentNode = presentNode.right;
+			} else {
+				break;
+			}
+		}
+		return traversal;
+	}
+	*/
 
 }
