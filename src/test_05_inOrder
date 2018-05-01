@@ -1,0 +1,137 @@
+0 insert	 2 two
+1 insert	 3 three
+2 insert	 5 five
+3 insert	 7 seven
+
+0 insert	11 eleven
+1 insert	13 thirteen
+2 insert	17 seventeen
+3 insert	19 nineteen
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_00.dot
+  1 preOrder
+  1 inOrder
+  1 debug     debug_05-1_00.dot
+  2 preOrder
+  2 inOrder
+  2 debug     debug_05-2_00.dot
+  3 preOrder
+  3 inOrder
+  3 debug     debug_05-3_00.dot
+
+0 insert	23 twenty-three
+1 insert	29 twenty-nine
+2 insert	31 thirty-one
+3 insert	37 thirty-seven
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_01.dot
+  1 preOrder
+  1 inOrder
+  1 debug     debug_05-1_01.dot
+  2 preOrder
+  2 inOrder
+  2 debug     debug_05-2_01.dot
+  3 preOrder
+  3 inOrder
+  3 debug     debug_05-3_01.dot
+
+
+0 insert	41 forty-one
+1 insert	43 forty-three
+2 insert	47 forty-seven
+3 insert	53 fifty-three
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_02.dot
+  1 preOrder
+  1 inOrder
+  1 debug     debug_05-1_02.dot
+  2 preOrder
+  2 inOrder
+  2 debug     debug_05-2_02.dot
+  3 preOrder
+  3 inOrder
+  3 debug     debug_05-3_02.dot
+
+0 insert	127 one-hundred-twenty-seven
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_03.dot
+
+0 insert	119 one-hundred-nineteen
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_04.dot
+
+0 insert	113 one-hundred-thirteen
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_05.dot
+
+0 insert	109 one-hundred-nine
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_06.dot
+
+0 insert	107 one-hundred-seven
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_07.dot
+
+0 insert	103 one-hundred-three
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_08.dot
+
+0 insert	101 one-hundred-one
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_09.dot
+
+0 insert	97 ninety-seven
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_10.dot
+
+0 insert	89 eighty-nine
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_11.dot
+
+0 insert	83 eighty-three
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_12.dot
+
+0 insert	79 seventy-nine
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_13.dot
+
+0 insert	73 seventy-three
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_14.dot
+
+0 insert	71 seventy-one
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_15.dot
+
+0 insert	67 sixty-seven
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_16.dot
+
+0 insert	61 sixty-one
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_17.dot
+
+0 insert	59 fifty-nine
+  0 preOrder
+  0 inOrder
+  0 debug     debug_05-0_18.dot
+

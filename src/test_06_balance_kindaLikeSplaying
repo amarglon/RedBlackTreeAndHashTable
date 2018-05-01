@@ -1,0 +1,254 @@
+0 insert	24 proposition
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_00.dot
+0 insert	27 men
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_01.dot
+0 insert	14 a
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_02.dot
+0 insert	28 are
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_03.dot
+0 insert	16 nation
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_04.dot
+0 insert	 6 ago
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_05.dot
+0 insert	15 new
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_06.dot
+0 insert	11 on
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_08.dot
+0 insert	20 and
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_09.dot
+0 insert	30 equal
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_10.dot
+0 insert	 3 and
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_11.dot
+0 insert	23 the
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_12.dot
+0 insert	10 forth
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_13.dot
+0 insert	21 dedicated
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_14.dot
+0 insert	 7 our
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_15.dot
+0 insert	 4 seven
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_16.dot
+0 insert	26 all
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_17.dot
+0 insert	17 conceived
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_18.dot
+0 insert	13 continent
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_19.dot
+0 insert	18 in
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_20.dot
+0 insert	22 to
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_21.dot
+0 insert	25 that
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_22.dot
+0 insert	 2 score
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_23.dot
+0 insert	 1 Four
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_24.dot
+0 insert	 8 fathers
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_25.dot
+0 insert	 9 brought
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_26.dot
+0 insert	19 liberty
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_27.dot
+0 insert	12 this
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_28.dot
+0 insert	29 created
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_29.dot
+0 insert	 5 years
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_30.dot
+
+# I think that this might do something interesting in the splay tree.
+# It will *NOT* build a perfect tree, but it might get close.  Let's
+# see what it does for real!
+
+0 search  1
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_31.dot
+0 search  3
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_32.dot
+0 search  5
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_33.dot
+0 search  7
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_34.dot
+0 search  9
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_35.dot
+0 search 11
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_36.dot
+0 search 13
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_37.dot
+0 search 15
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_38.dot
+0 search 17
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_39.dot
+0 search 19
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_40.dot
+0 search 21
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_41.dot
+0 search 23
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_42.dot
+0 search 25
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_43.dot
+0 search 27
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_44.dot
+0 search 29
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_45.dot
+0 search 31
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_46.dot
+
+0 search  2
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_47.dot
+0 search  6
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_48.dot
+0 search 10
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_49.dot
+0 search 14
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_50.dot
+0 search 18
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_51.dot
+0 search 22
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_52.dot
+0 search 26
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_53.dot
+0 search 30
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_54.dot
+
+0 search  4
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_55.dot
+0 search 12
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_56.dot
+0 search 20
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_57.dot
+0 search 28
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_58.dot
+
+0 search  8
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_59.dot
+0 search 24
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_60.dot
+
+0 search 16
+  0 preOrder
+  0 inOrder
+  0 debug     debug_06_61.dot
+

@@ -1,0 +1,113 @@
+0 insert	12 O
+    0 debug debug_03_00.dot
+    0 inOrder
+    0 postOrder
+0 insert	20 G
+    0 debug debug_03_01.dot
+    0 inOrder
+    0 postOrder
+0 insert	4  W
+    0 debug debug_03_02.dot
+    0 inOrder
+    0 postOrder
+0 insert	24 C
+    0 debug debug_03_03.dot
+    0 inOrder
+    0 postOrder
+0 insert	16 K
+    0 debug debug_03_04.dot
+    0 inOrder
+    0 postOrder
+0 insert	8  S
+    0 debug debug_03_05.dot
+    0 inOrder
+    0 postOrder
+0 insert	0  <left-edge>
+    0 debug debug_03_06.dot
+    0 inOrder
+    0 postOrder
+0 insert	26 A
+    0 debug debug_03_07.dot
+    0 inOrder
+    0 postOrder
+0 insert	22 E
+    0 debug debug_03_08.dot
+    0 inOrder
+    0 postOrder
+0 insert	18 I
+    0 debug debug_03_09.dot
+    0 inOrder
+    0 postOrder
+0 insert	14 M
+    0 debug debug_03_10.dot
+    0 inOrder
+    0 postOrder
+0 insert	10 Q
+    0 debug debug_03_11.dot
+    0 inOrder
+    0 postOrder
+0 insert	6  U
+    0 debug debug_03_12.dot
+    0 inOrder
+    0 postOrder
+0 insert	2  Y
+    0 debug debug_03_13.dot
+    0 inOrder
+    0 postOrder
+0 insert	27 <right-edge>
+    0 debug debug_03_14.dot
+    0 inOrder
+    0 postOrder
+0 insert	25 B
+    0 debug debug_03_15.dot
+    0 inOrder
+    0 postOrder
+0 insert	23 D
+    0 debug debug_03_16.dot
+    0 inOrder
+    0 postOrder
+0 insert	21 F
+    0 debug debug_03_17.dot
+    0 inOrder
+    0 postOrder
+0 insert	19 H
+    0 debug debug_03_18.dot
+    0 inOrder
+    0 postOrder
+0 insert	17 J
+    0 debug debug_03_19.dot
+    0 inOrder
+    0 postOrder
+0 insert	15 L
+    0 debug debug_03_20.dot
+    0 inOrder
+    0 postOrder
+0 insert	13 N
+    0 debug debug_03_21.dot
+    0 inOrder
+    0 postOrder
+0 insert	11 P
+    0 debug debug_03_22.dot
+    0 inOrder
+    0 postOrder
+0 insert	9  R
+    0 debug debug_03_23.dot
+    0 inOrder
+    0 postOrder
+0 insert	7  T
+    0 debug debug_03_24.dot
+    0 inOrder
+    0 postOrder
+0 insert	5  V
+    0 debug debug_03_25.dot
+    0 inOrder
+    0 postOrder
+0 insert	3  X
+    0 debug debug_03_26.dot
+    0 inOrder
+    0 postOrder
+0 insert	1  Z
+    0 debug debug_03_27.dot
+    0 inOrder
+    0 postOrder
+

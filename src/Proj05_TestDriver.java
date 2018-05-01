@@ -88,13 +88,13 @@ public class Proj05_TestDriver
 				else
 					trees[i] = new Proj05_RedBlack_student();
 			}
-			else
-			{
+			/*else
+			{ 
 				if (ex)
 					trees[i] = new Proj05_HashTable_example();
 				else
 					trees[i] = new Proj05_HashTable_student();
-			}
+			}*/
 		}
 
 

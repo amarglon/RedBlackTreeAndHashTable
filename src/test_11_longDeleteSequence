@@ -1,0 +1,232 @@
+0 insert	 920 n/a
+0 insert	5118 n/a
+0 insert	5844 n/a
+0 insert	 969 n/a
+0 insert	4736 n/a
+0 insert	3930 n/a
+0 insert	3035 n/a
+0 insert	4144 n/a
+0 insert	 410 n/a
+0 insert	3457 n/a
+0 insert	 968 n/a
+0 insert	1891 n/a
+0 insert	4844 n/a
+0 insert	3698 n/a
+0 insert	4586 n/a
+0 insert	 234 n/a
+0 insert	4206 n/a
+0 insert	4414 n/a
+0 insert	2421 n/a
+0 insert	5352 n/a
+0 insert	2277 n/a
+0 insert	4633 n/a
+0 insert	1481 n/a
+0 insert	3627 n/a
+0 insert	2740 n/a
+0 insert	1843 n/a
+0 insert	4842 n/a
+0 insert	4478 n/a
+0 insert	2981 n/a
+0 insert	2343 n/a
+0 insert	 299 n/a
+0 insert	5606 n/a
+
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_00.dot
+
+0 delete 3930
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_01.dot
+
+0 delete 3698
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_02.dot
+
+0 delete 3627
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_03.dot
+
+0 delete 3457
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_04.dot
+
+0 delete 3035
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_05.dot
+
+0 delete 968
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_06.dot
+
+0 delete 299
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_07.dot
+
+0 delete 969
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_08.dot
+
+0 delete 920
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_09.dot
+
+0 delete 4144
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_10.dot
+
+0 delete 5118
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_11.dot
+
+0 delete 4842
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_12.dot
+
+0 delete 5844
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_13.dot
+
+0 delete 5606
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_14.dot
+
+0 delete 5352
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_15.dot
+
+0 delete 4844
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_16.dot
+
+0 delete 2981
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_17.dot
+
+0 delete 2740
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_18.dot
+
+0 delete 4633
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_19.dot
+
+0 delete 4736
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_20.dot
+
+0 delete 4586
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_21.dot
+
+0 delete 4206
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_22.dot
+
+0 delete 4414
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_23.dot
+
+0 delete 410
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_24.dot
+
+0 delete 1843
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_25.dot
+
+0 delete 1481
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_26.dot
+
+0 delete 2277
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_27.dot
+
+0 delete 4478
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_28.dot
+
+0 delete 234
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_29.dot
+
+0 delete 2343
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_30.dot
+
+0 delete 1891
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_31.dot
+
+0 delete 2421
+  0 preOrder
+  0 inOrder
+  0 postOrder
+  0 debug     debug_11_32.dot
+
+0 insert 10 last_one!
+

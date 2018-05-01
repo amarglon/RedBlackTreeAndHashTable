@@ -1,0 +1,398 @@
+0 insert	 728 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_01.dot
+0 delete	 728
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_02.dot
+0 insert	9776 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_03.dot
+0 insert	5412 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_04.dot
+0 insert	3950 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_05.dot
+0 delete	3950
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_06.dot
+0 insert	3566 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_07.dot
+0 delete	9776
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_08.dot
+0 insert	3987 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_09.dot
+0 insert	 236 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_10.dot
+0 insert	9024 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_11.dot
+0 delete	5412
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_12.dot
+0 delete	 236
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_13.dot
+0 insert	 448 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_14.dot
+0 delete	 448
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_15.dot
+0 insert	5451 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_16.dot
+0 delete	3987
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_17.dot
+0 insert	8553 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_18.dot
+0 delete	3566
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_19.dot
+0 insert	8548 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_20.dot
+0 insert	6110 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_21.dot
+0 insert	3401 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_22.dot
+0 insert	2662 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_23.dot
+0 insert	4647 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_24.dot
+0 delete	8553
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_25.dot
+0 delete	9024
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_26.dot
+0 delete	3401
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_27.dot
+0 insert	1544 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_28.dot
+0 insert	3561 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_29.dot
+0 insert	 355 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_30.dot
+0 delete	1544
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_31.dot
+0 insert	9954 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_32.dot
+0 insert	8115 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_33.dot
+0 insert	2075 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_34.dot
+0 insert	3050 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_35.dot
+0 delete	3050
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_36.dot
+0 delete	2662
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_37.dot
+0 delete	3561
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_38.dot
+0 insert	8974 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_39.dot
+0 insert	5907 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_40.dot
+0 delete	 355
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_41.dot
+0 delete	4647
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_42.dot
+0 insert	8017 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_43.dot
+0 insert	6584 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_44.dot
+0 delete	8115
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_45.dot
+0 insert	8371 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_46.dot
+0 insert	3126 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_47.dot
+0 delete	8974
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_48.dot
+0 insert	9672 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_49.dot
+0 insert	3174 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_50.dot
+0 delete	3174
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_51.dot
+0 insert	7666 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_52.dot
+0 insert	2882 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_53.dot
+0 insert	5579 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_54.dot
+0 insert	2381 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_55.dot
+0 insert	8979 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_56.dot
+0 delete	2381
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_57.dot
+0 insert	8770 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_58.dot
+0 delete	6584
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_59.dot
+0 insert	4160 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_60.dot
+0 insert	7679 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_61.dot
+0 insert	5134 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_62.dot
+0 insert	9029 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_63.dot
+0 delete	8017
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_64.dot
+0 delete	8548
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_65.dot
+0 delete	3126
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_66.dot
+0 insert	3327 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_67.dot
+0 insert	7222 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_68.dot
+0 delete	3327
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_69.dot
+0 insert	5505 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_70.dot
+0 insert	7742 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_71.dot
+0 insert	5751 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_72.dot
+0 delete	8979
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_73.dot
+0 delete	5505
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_74.dot
+0 insert	2774 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_75.dot
+0 insert	 550 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_76.dot
+0 delete	9029
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_77.dot
+0 insert	3098 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_78.dot
+0 insert	6602 n/a
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_79.dot
+0 delete	6602
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_80.dot
+0 delete	7742
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_81.dot
+0 delete	2075
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_82.dot
+0 delete	5579
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_83.dot
+0 delete	 550
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_84.dot
+0 delete	4160
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_85.dot
+0 delete	9954
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_86.dot
+0 delete	8770
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_87.dot
+0 delete	7666
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_88.dot
+0 delete	7679
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_89.dot
+0 delete	5907
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_90.dot
+0 delete	8371
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_91.dot
+0 delete	9672
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_92.dot
+0 delete	5451
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_93.dot
+0 delete	7222
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_94.dot
+0 delete	5134
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_95.dot
+0 delete	3098
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_96.dot
+0 delete	2882
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_97.dot
+0 delete	6110
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_98.dot
+0 delete	5751
+    0 inOrder
+    0 postOrder
+    0 debug     debug_10_99.dot
+0 delete	2774
+

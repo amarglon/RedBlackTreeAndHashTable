@@ -1,0 +1,32 @@
+0 insert	10	ten(tree_0)
+0 insert	0	zero(tree_0)
+0 insert	20	twenty(tree_0)
+
+0 inOrder
+0 postOrder
+0 debug debug_01_0_step1.dot
+
+1 insert	0	zero(tree_1)
+1 insert	10	ten(tree_1)
+1 insert	20	twenty(tree_1)
+
+1 inOrder
+1 postOrder
+1 debug debug_01_1_step1.dot
+
+2 insert	20	twenty(tree_2)
+2 insert	0	zero(tree_2)
+2 insert	10	ten(tree_2)
+
+2 inOrder
+2 postOrder
+2 debug debug_01_2_step1.dot
+
+3 insert	10	ten(tree_3)
+3 insert	20	twenty(tree_3)
+3 insert	0	zero(tree_3)
+
+3 inOrder
+3 postOrder
+3 debug debug_01_3_step1.dot
+

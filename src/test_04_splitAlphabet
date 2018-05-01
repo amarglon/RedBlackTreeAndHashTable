@@ -1,0 +1,45 @@
+0 insert	12 O
+1 insert	20 G
+2 insert	4  W
+3 insert	24 C
+0 insert	16 K
+1 insert	8  S
+2 insert	0  <left-edge>
+3 insert	26 A
+0 insert	22 E
+1 insert	18 I
+2 insert	14 M
+3 insert	10 Q
+0 insert	6  U
+1 insert	2  Y
+2 insert	27 <right-edge>
+3 insert	25 B
+0 insert	23 D
+1 insert	21 F
+2 insert	19 H
+3 insert	17 J
+0 insert	15 L
+1 insert	13 N
+2 insert	11 P
+3 insert	9  R
+0 insert	7  T
+1 insert	5  V
+2 insert	3  X
+3 insert	1  Z
+
+0 inOrder
+0 postOrder
+0 debug debug_04_0.dot
+
+1 inOrder
+1 postOrder
+1 debug debug_04_1.dot
+
+2 inOrder
+2 postOrder
+2 debug debug_04_2.dot
+
+3 inOrder
+3 postOrder
+3 debug debug_04_3.dot
+

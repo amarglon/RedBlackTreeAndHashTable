@@ -9,20 +9,16 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		//Proj05_RedBlackNode current = root;
 		if (root == null) {
 			root = node; 
-			root.isRed = false;
 		} else { 
 			if (search(key) != null) {
 				throw new IllegalArgumentException("Attempt to insert a duplicate key '" + key + "'");
 			} else {
 				//insert the node
 				insertHelper(node, root);
-				//rebalance the tree
-				//rebalanceTree(node, root);
-				//recolor the root if red
-				if (root.isRed) {
-					root.isRed = false;
-				}
 			}
+		}
+		if (root.isRed == true) {
+			recolor(root, false, true);
 		}
 	}
 
@@ -31,21 +27,20 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		if (child.key < parent.key) {
 			if (parent.left == null) {
 				parent.left = child;
-				//rebalanceTree(parent.left, parent);
 			} else {
 				insertHelper(child, parent.left);
 			}
 		} else {
 			if (parent.right == null) {
 				parent.right = child;
-				//rebalanceTree(parent.right, parent);
 			} else {
 				insertHelper(child, parent.right);
 			}
 		}
-		if (parent.isRed == false) {
-			rebalanceTree(parent);
+		if (parent.isRed == true) {
+			return;
 		}
+		rebalanceTree(parent);
 	}
 	private void rebalanceTree(Proj05_RedBlackNode grandparent) {
 		//case 1: if parent is black, return
@@ -58,32 +53,45 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		}
 		
 		//seeking red-red problems
+		//check left parent
 		if (colorChecker(grandparent.left) == true) {
+			//if uncle is black
 			if (colorChecker(grandparent.right) == false) {
 				if (colorChecker(grandparent.left.left) == true) {
 					//single right rotation, recolor nodes
-					singleRightRotation(grandparent.left.left, grandparent.left);
-					//recolor(grandparent
+					//parent becomes the root of the widget. grandparent moves right
+					//make the root of the widget black, the children red
+					singleRightRotation(grandparent.left, grandparent);
+		//check if recolor is the problem
+					recolor(grandparent, true, false);
 				} else if (colorChecker(grandparent.left.right) == true) {
 					//single rotate left, single rotate right, recolor nodes
-					leftRightRotation(grandparent.left, grandparent);
-					//recolor(grandparent
+					//singleLeftRotation(grandparent.left.right, grandparent.left);
+					//singleRightRotation(grandparent.left, grandparent);
+					leftRightRotation(grandparent);
+					recolor(grandparent, true, false);
+					//leftRightRotation(grandparent.left, grandparent);
 				}
+			//if the uncle is red	
 			} else {
 				recolor(grandparent, true, false);
 			}
 		}
-		
+		//check right parent
 		if (colorChecker(grandparent.right) == true) {
+			//if uncle is black
 			if (colorChecker(grandparent.left) == false) {
 				if (colorChecker(grandparent.right.left) == true) {
 					//single right rotation, single left rotation, recolor nodes
-					rightLeftRotation(grandparent.right, grandparent);
-					//recolor(grandparent, 
+					//singleRightRotation(grandparent.right.left, grandparent.right);
+					//singleLeftRotation(grandparent.right, grandparent);
+					rightLeftRotation(grandparent);
+					recolor(grandparent, true, false);
+					//rightLeftRotation(grandparent.right, grandparent);
 				} else if (colorChecker(grandparent.right.right) == true) {
 					//single left rotation, recolor nodes
-					singleLeftRotation(grandparent.right.right, grandparent.right);
-					//recolor(grandparent
+					singleLeftRotation(grandparent.right, grandparent);
+					recolor(grandparent, true, false);
 				}
 			} else {
 				recolor(grandparent, true, false);
@@ -105,43 +113,48 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 	private void recolor(Proj05_RedBlackNode node, boolean parentValue, boolean childValue) {
 		//recolor node and children
 		node.isRed = parentValue;
-		node.left.isRed = childValue;
-		node.right.isRed = childValue;
+		if (node.left != null) {
+			node.left.isRed = childValue;
+		}
+		if (node.right != null) {
+			node.right.isRed = childValue;
+		}
 	}
 	
 	private void singleLeftRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
-		Proj05_RedBlackNode rightNode = grandparent.right;
-		if (grandparent == root) {
+		Proj05_RedBlackNode rightNode = parent.right;
+		if (parent == root) {
 			root = rightNode;
 		} else {
-			if (grandparent.left == grandparent) {
+			if (grandparent.left == parent) {
 				grandparent.left = rightNode;
 			} else {
 				grandparent.right = rightNode;
 			}
 		}
-		grandparent.right = rightNode.left;
-		rightNode.left = grandparent;
+		parent.right = rightNode.left;
+		rightNode.left = parent;
 	}
-	private void leftRightRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
+	private void leftRightRotation(Proj05_RedBlackNode grandparent) {
 		// the node's left child, and the left child's right child (grand child)
-		Proj05_RedBlackNode leftNode = parent.left;
+		Proj05_RedBlackNode leftNode = grandparent.left;
 		Proj05_RedBlackNode rightChild = leftNode.right;
-
-		if (parent == root) {
+		Proj05_RedBlackNode tempGrandparent = grandparent;
+		if (grandparent == root) {
 			root = rightChild;
 		} else {
-			if (grandparent.left == parent) {
-				grandparent.left = rightChild;
-			} else {
-				grandparent.right = rightChild;
-			}
+			grandparent = rightChild;
+			//if (node.left == grandparent) {
+			//	node.left = rightChild;
+			//} else {
+			//	node.right = rightChild;
+			//}
 		}
 
-		parent.left = rightChild.right;
+		tempGrandparent.left = rightChild.right;
 		leftNode.right = rightChild.left;
 		rightChild.left = leftNode;
-		rightChild.right = parent;
+		rightChild.right = tempGrandparent;
 	}
 
 	private void singleRightRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
@@ -155,27 +168,30 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 				grandparent.right = leftNode;
 			}
 		}
+		
 		parent.left = leftNode.right;
 		leftNode.right = parent;
 	}
 	
-	private void rightLeftRotation(Proj05_RedBlackNode parent, Proj05_RedBlackNode grandparent) {
+	private void rightLeftRotation(Proj05_RedBlackNode grandparent) {
 		Proj05_RedBlackNode rightNode = grandparent.right;
 		Proj05_RedBlackNode leftChild = rightNode.left;
-
+		Proj05_RedBlackNode tempGrandparent = grandparent;
+		
 		if (grandparent == root) {
 			root = leftChild;
 		} else {
-			if (grandparent.left == grandparent) {
-				grandparent.left = leftChild;
-			} else {
-				grandparent.right = leftChild;
-			}
+			grandparent = leftChild;
+			//if (grandparent.left == grandparent) {
+			//	grandparent.left = leftChild;
+			//} else {
+			//	grandparent.right = leftChild;
+			//}
 		}
 
-		grandparent.right = leftChild.left;
+		tempGrandparent.right = leftChild.left;
 		rightNode.left = leftChild.right;
-		leftChild.left = grandparent;
+		leftChild.left = tempGrandparent;
 		leftChild.right = rightNode;
 
 	}
@@ -218,7 +234,11 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 			return;
 		} else {
 			inOrderHelper(node.left);
-			System.out.print(" " + node.key + ":'" + node.value + "'");
+			if (node.isRed == true) {
+				System.out.print(" (r):" + node.key + ":'" + node.value + "'");
+			} else {
+				System.out.print(" (b):" + node.key + ":'" + node.value + "'");	
+			}
 			inOrderHelper(node.right);
 		}
 	}
@@ -237,7 +257,11 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		if (node == null) {
 			return;
 		} else {
-			System.out.print(" " + node.key + ":'" + node.value + "'");
+			if (node.isRed) {
+				System.out.print(" (r):" + node.key + ":'" + node.value + "'");
+			} else {
+				System.out.print(" (b):" + node.key + ":'" + node.value + "'");	
+			}
 			preOrderHelper(node.left);
 			preOrderHelper(node.right);
 		}
@@ -260,7 +284,11 @@ public class Proj05_RedBlack_student implements Proj04_Dictionary {
 		} else {
 			postOrderHelper(node.left);
 			postOrderHelper(node.right);
-			System.out.print(" " + node.key + ":'" + node.value + "'");
+			if (node.isRed) {
+				System.out.print(" (r):" + node.key + ":'" + node.value + "'");
+			} else {
+				System.out.print(" (b):" + node.key + ":'" + node.value + "'");	
+			}
 		}
 
 	}
